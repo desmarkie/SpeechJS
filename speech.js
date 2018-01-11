@@ -62,6 +62,15 @@ export default class Speech
 
     // already running, don't start another one
     if( this.speechRunning ) return;
+    
+    // restart if being called after an error was thrown
+    if( this.needsRestart )
+    {
+
+      this.restart();
+      return;
+
+    }
 
     this.recognitionList.addFromString( this.grammar, 1 );
     this.recognition.grammars = this.recognitionList;
