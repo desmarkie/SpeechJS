@@ -153,8 +153,7 @@ export default class Speech
     this.recognition.stop(); // *should* have already stopped, but ya know, just in case
     if( this.errorCallback != null ) this.errorCallback( e ); // report the error if needed
 
-    if( e.error == 'network' ) this.returnNothing(); // return null result
-    else this.needsRestart = true;
+    if( e.error == 'network' ) this.needsRestart = true; // need to recreate SpeechRecognition
     
   }
 
